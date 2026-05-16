@@ -1,0 +1,8 @@
+<svg width="320" height="320" viewBox="0 0 320 320" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Level Up LU monogram</title>
+  <desc id="desc">LU monogram with red upward arrow integrated into the U.</desc>
+  <rect width="320" height="320" rx="56" fill="#050505"/>
+  <path d="M64 74H114V206H184V250H64V74Z" fill="#F7F4EF"/>
+  <path d="M190 250C162 250 141 243 126 229C111 215 104 195 104 170V74H154V166C154 179 157 188 164 195C170 202 179 205 190 205C201 205 210 202 216 195C223 188 226 179 226 166V133H202L251 78L300 133H276V170C276 195 269 215 254 229C239 243 218 250 190 250Z" fill="#FF3B18"/>
+  <path d="M202 133L251 78L300 133H276V166C276 191 269 211 254 226C241 239 224 247 202 249C217 245 226 232 226 207V133H202Z" fill="#FF3B18"/>
+</svg>
