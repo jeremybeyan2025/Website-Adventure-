@@ -76,9 +76,7 @@
   transform: skewX(-7deg);
 }
 
-.word-level {
-  color: #050505;
-}
+.word-level { color: #050505; }
 
 .word-up {
   position: relative;
@@ -108,19 +106,96 @@
 }
 
 @media (max-width: 760px) {
-  .primary-logo-wrap {
-    min-height: 310px;
-    padding-top: 76px !important;
+  body {
+    background: #0a0a0a !important;
   }
 
-  .primary-wordmark-main {
-    font-size: clamp(44px, 14vw, 72px);
-    gap: 10px;
+  .site-header {
+    background: rgba(255,255,255,.96) !important;
   }
 
-  .primary-wordmark-sub {
-    font-size: 13px;
-    letter-spacing: .32em;
-    text-indent: .32em;
+  .hero {
+    padding: 0 !important;
+    background: #0a0a0a !important;
+  }
+
+  .hero-board {
+    display: block !important;
+    width: 100% !important;
+    min-height: auto !important;
+    border: 0 !important;
+    box-shadow: none !important;
+    background: #0a0a0a !important;
+  }
+
+  .hero-rail {
+    position: relative !important;
+    min-height: calc(100svh - 76px) !important;
+    display: flex !important;
+    align-items: flex-end !important;
+    padding: 0 !important;
+    overflow: hidden !important;
+    background: #0a0a0a !important;
+  }
+
+  .hero-rail > div:first-child,
+  .rail-manifesto {
+    display: none !important;
+  }
+
+  .rail-city {
+    position: absolute !important;
+    inset: 0 !important;
+    min-height: 100% !important;
+    margin: 0 !important;
+    background-image:
+      linear-gradient(180deg, rgba(0,0,0,.14) 0%, rgba(0,0,0,.2) 28%, rgba(0,0,0,.84) 70%, #0a0a0a 100%),
+      url("2117B434-4FC6-4994-AD15-084E980D912A.png") !important;
+    background-size: cover, cover !important;
+    background-position: center top, center top !important;
+  }
+
+  .rail-city::after {
+    opacity: .22 !important;
+  }
+
+  .rail-bottom {
+    position: relative !important;
+    z-index: 2 !important;
+    width: 100% !important;
+    padding: 0 28px 58px !important;
+  }
+
+  .rail-bottom .arrow-mark {
+    width: 54px !important;
+    height: 34px !important;
+    margin-bottom: 22px !important;
+  }
+
+  .rail-bottom strong {
+    font-size: clamp(52px, 15vw, 82px) !important;
+    line-height: .82 !important;
+    letter-spacing: -.02em !important;
+  }
+
+  .hero-main {
+    display: none !important;
+  }
+
+  .marquee {
+    border-top: 2px solid #0a0a0a !important;
+  }
+
+  .marquee span {
+    font-size: 34px !important;
+  }
+
+  .work {
+    background: #fff !important;
+  }
+
+  .section-heading h2 {
+    font-size: clamp(46px, 13vw, 78px) !important;
+    line-height: .82 !important;
   }
 }
