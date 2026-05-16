@@ -1,0 +1,7 @@
+<svg width="192" height="192" viewBox="0 0 192 192" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Level Up compact icon</title>
+  <desc id="desc">Compact black app icon with white L and red upward U arrow.</desc>
+  <rect width="192" height="192" rx="42" fill="#050505"/>
+  <path d="M39 48H70V126H113V153H39V48Z" fill="#F7F4EF"/>
+  <path d="M117 153C99 153 86 148 77 139C68 130 64 118 64 103V48H95V100C95 108 97 114 101 118C105 122 110 124 117 124C124 124 129 122 133 118C137 114 139 108 139 100V82H124L154 48L184 82H169V103C169 118 164 130 155 139C146 148 134 153 117 153Z" fill="#FF3B18"/>
+</svg>
