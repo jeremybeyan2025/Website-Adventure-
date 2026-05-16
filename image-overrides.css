@@ -45,3 +45,82 @@
   background-size: cover, cover !important;
   background-position: center, center !important;
 }
+
+.primary-logo-wrap {
+  min-height: 430px;
+  background: #fff !important;
+}
+
+.primary-logo-wrap img {
+  display: none !important;
+}
+
+.primary-wordmark {
+  width: min(820px, 94%);
+  margin-top: 28px;
+  text-align: center;
+}
+
+.primary-wordmark-main {
+  display: flex;
+  justify-content: center;
+  align-items: baseline;
+  gap: clamp(12px, 2vw, 28px);
+  font-family: Inter, system-ui, sans-serif;
+  font-size: clamp(58px, 10vw, 132px);
+  font-weight: 950;
+  font-style: italic;
+  line-height: .78;
+  letter-spacing: -.105em;
+  text-transform: uppercase;
+  transform: skewX(-7deg);
+}
+
+.word-level {
+  color: #050505;
+}
+
+.word-up {
+  position: relative;
+  color: #ff1e2d;
+  padding-right: .12em;
+}
+
+.word-up::before {
+  content: "";
+  position: absolute;
+  left: .1em;
+  top: -.62em;
+  width: .42em;
+  height: .78em;
+  background: #ff1e2d;
+  clip-path: polygon(50% 0, 100% 42%, 72% 42%, 72% 100%, 28% 100%, 28% 42%, 0 42%);
+}
+
+.primary-wordmark-sub {
+  margin-top: clamp(20px, 2.2vw, 34px);
+  font-size: clamp(16px, 2.1vw, 28px);
+  font-weight: 850;
+  letter-spacing: .52em;
+  text-indent: .52em;
+  color: #0a0a0a;
+  text-transform: uppercase;
+}
+
+@media (max-width: 760px) {
+  .primary-logo-wrap {
+    min-height: 310px;
+    padding-top: 76px !important;
+  }
+
+  .primary-wordmark-main {
+    font-size: clamp(44px, 14vw, 72px);
+    gap: 10px;
+  }
+
+  .primary-wordmark-sub {
+    font-size: 13px;
+    letter-spacing: .32em;
+    text-indent: .32em;
+  }
+}
