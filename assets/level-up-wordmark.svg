@@ -1,0 +1,12 @@
+<svg width="920" height="180" viewBox="0 0 920 180" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Level Up primary wordmark</title>
+  <desc id="desc">Bold Level Up wordmark with red upward arrow styling.</desc>
+  <rect width="920" height="180" fill="none"/>
+  <g font-family="Inter, Arial, sans-serif" font-weight="900" font-style="italic" letter-spacing="-8">
+    <text x="8" y="108" font-size="104" fill="#050505">LEVEL</text>
+    <text x="590" y="108" font-size="104" fill="#FF3B18">UP</text>
+  </g>
+  <path d="M650 105V57H621L686 0L750 57H721V105H650Z" fill="#FF3B18" opacity="0.98"/>
+  <path d="M650 105V57H621L686 0L750 57H721V105H650Z" fill="#FF3B18"/>
+  <text x="315" y="156" font-family="Inter, Arial, sans-serif" font-size="24" font-weight="800" letter-spacing="16" fill="#050505">GROWTH AGENCY</text>
+</svg>
