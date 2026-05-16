@@ -24,7 +24,7 @@ function injectSpinCard() {
   style.textContent = `
     .spin-showcase {
       position: relative;
-      padding: clamp(64px, 10vw, 120px) 20px;
+      padding: clamp(90px, 12vw, 140px) 20px clamp(70px, 10vw, 120px);
       overflow: hidden;
       color: #fff;
       background:
@@ -42,7 +42,7 @@ function injectSpinCard() {
         linear-gradient(rgba(255,255,255,.06) 1px, transparent 1px),
         linear-gradient(90deg, rgba(255,255,255,.06) 1px, transparent 1px);
       background-size: 78px 78px;
-      opacity: .28;
+      opacity: .25;
       transform: perspective(700px) rotateX(58deg) translateY(-160px) scale(1.5);
       pointer-events: none;
     }
@@ -71,10 +71,11 @@ function injectSpinCard() {
       margin: 0 0 22px;
       max-width: 620px;
       color: #fff;
+      font-family: "Barlow Condensed", Inter, sans-serif;
       font-size: clamp(46px, 7vw, 108px);
       line-height: .82;
       font-weight: 950;
-      letter-spacing: -.105em;
+      letter-spacing: -.035em;
       text-transform: uppercase;
     }
 
@@ -91,9 +92,7 @@ function injectSpinCard() {
       place-items: center;
       perspective: 1200px;
       -webkit-perspective: 1200px;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      touch-action: none;
+      touch-action: pan-y;
       user-select: none;
       -webkit-user-select: none;
     }
@@ -102,68 +101,71 @@ function injectSpinCard() {
       position: relative;
       width: min(430px, 86vw);
       aspect-ratio: 3 / 4;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      transform: rotateX(-8deg) rotateY(-18deg);
-      -webkit-transform: rotateX(-8deg) rotateY(-18deg);
-      transition: transform .18s ease-out;
-      cursor: grab;
-      filter: drop-shadow(0 48px 70px rgba(0,0,0,.45));
-    }
-
-    .spin-card.is-dragging {
-      cursor: grabbing;
-      transition: none;
-    }
-
-    .spin-face {
-      position: absolute;
-      inset: 0;
+      overflow: hidden;
+      padding: 28px;
       display: flex;
       flex-direction: column;
       justify-content: space-between;
-      overflow: hidden;
-      padding: 28px;
-      border: 2px solid rgba(255,255,255,.25);
+      border: 2px solid rgba(255,255,255,.34);
       border-radius: 28px;
-      backface-visibility: hidden;
-      -webkit-backface-visibility: hidden;
-      transform-style: preserve-3d;
-      -webkit-transform-style: preserve-3d;
-      background: #fff;
       color: #0a0a0a;
-    }
-
-    .spin-front {
-      transform: rotateY(0deg) translateZ(2px);
-      -webkit-transform: rotateY(0deg) translateZ(2px);
       background:
         linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,.88)),
         url("24AB994A-CD12-4F26-8F1D-054BBB297212.png") center/cover;
+      box-shadow: 0 48px 90px rgba(0,0,0,.48);
+      transform: perspective(1200px) rotateX(var(--tilt-x, -8deg)) rotateY(var(--tilt-y, -12deg)) rotateZ(var(--spin-z, 0deg));
+      -webkit-transform: perspective(1200px) rotateX(var(--tilt-x, -8deg)) rotateY(var(--tilt-y, -12deg)) rotateZ(var(--spin-z, 0deg));
+      transition: transform .56s cubic-bezier(.2,.8,.2,1), background .28s ease, color .28s ease, border-color .28s ease;
+      cursor: pointer;
+      isolation: isolate;
     }
 
-    .spin-front::before {
+    .spin-card::before {
       content: "";
       position: absolute;
       inset: 0;
-      background: linear-gradient(135deg, rgba(255,255,255,.9), rgba(255,255,255,.3) 46%, rgba(255,30,45,.24));
+      z-index: 0;
+      background: linear-gradient(135deg, rgba(255,255,255,.92), rgba(255,255,255,.42) 46%, rgba(255,30,45,.25));
+      pointer-events: none;
+      transition: opacity .28s ease;
+    }
+
+    .spin-card::after {
+      content: "";
+      position: absolute;
+      inset: -40%;
+      z-index: 1;
+      background: linear-gradient(110deg, transparent 35%, rgba(255,255,255,.42), transparent 62%);
+      transform: translateX(-55%) rotate(10deg);
+      opacity: 0;
       pointer-events: none;
     }
 
-    .spin-back {
-      transform: rotateY(180deg) translateZ(2px);
-      -webkit-transform: rotateY(180deg) translateZ(2px);
+    .spin-card.is-spinning::after {
+      animation: spinShine .62s ease;
+    }
+
+    @keyframes spinShine {
+      0% { opacity: 0; transform: translateX(-55%) rotate(10deg); }
+      35% { opacity: .75; }
+      100% { opacity: 0; transform: translateX(55%) rotate(10deg); }
+    }
+
+    .spin-card.is-back {
       color: #fff;
+      border-color: rgba(255,255,255,.25);
       background:
-        linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.86)),
+        linear-gradient(180deg, rgba(0,0,0,.16), rgba(0,0,0,.86)),
         url("BE64B3A0-2856-4C7D-9326-55E9B7140168.png") center/cover;
     }
 
-    .spin-face > * {
+    .spin-card.is-back::before {
+      opacity: 0;
+    }
+
+    .spin-card > * {
       position: relative;
       z-index: 2;
-      transform: translateZ(8px);
-      -webkit-transform: translateZ(8px);
     }
 
     .spin-logo-row {
@@ -183,6 +185,11 @@ function injectSpinCard() {
       font-size: 22px;
       font-weight: 950;
       letter-spacing: -.08em;
+    }
+
+    .spin-card.is-back .spin-badge {
+      color: #0a0a0a;
+      background: #fff;
     }
 
     .spin-logo-text strong {
@@ -205,18 +212,21 @@ function injectSpinCard() {
       text-transform: uppercase;
     }
 
-    .spin-front h3,
-    .spin-back h3 {
+    .spin-card.is-back .spin-logo-text span {
+      color: #fff;
+    }
+
+    .spin-card h3 {
       margin: 0;
-      font-size: clamp(44px, 7vw, 76px);
-      line-height: .82;
+      font-family: "Barlow Condensed", Inter, sans-serif;
+      font-size: clamp(50px, 7vw, 84px);
+      line-height: .78;
       font-weight: 950;
-      letter-spacing: -.105em;
+      letter-spacing: -.035em;
       text-transform: uppercase;
     }
 
-    .spin-front h3 span,
-    .spin-back h3 span {
+    .spin-card h3 span {
       color: #ff1e2d;
     }
 
@@ -224,12 +234,16 @@ function injectSpinCard() {
       display: inline-flex;
       width: fit-content;
       padding: 12px 14px;
-      border: 2px solid #0a0a0a;
-      color: #0a0a0a;
+      border: 2px solid currentColor;
+      color: currentColor;
       background: rgba(255,255,255,.62);
       font-size: 12px;
       font-weight: 950;
       text-transform: uppercase;
+    }
+
+    .spin-card.is-back .spin-hint {
+      background: rgba(0,0,0,.24);
     }
 
     .spin-services {
@@ -265,21 +279,18 @@ function injectSpinCard() {
 
     @media (max-width: 760px) {
       .spin-showcase {
-        padding: 58px 16px 70px;
+        padding: 82px 16px 70px;
       }
       .spin-copy h2 {
-        font-size: clamp(46px, 16vw, 78px);
+        font-size: clamp(52px, 16vw, 84px);
       }
       .spin-card {
         width: min(360px, 90vw);
-      }
-      .spin-face {
         border-radius: 22px;
         padding: 22px;
       }
-      .spin-front h3,
-      .spin-back h3 {
-        font-size: 48px;
+      .spin-card h3 {
+        font-size: 56px;
       }
     }
   `;
@@ -295,24 +306,15 @@ function injectSpinCard() {
         <p>A cinematic business card moment for the brand — built to feel tactile, fast, and premium on mobile.</p>
       </div>
       <div class="spin-card-stage" aria-label="Interactive spinning Level Up card">
-        <div class="spin-card" id="spinCard" role="button" tabindex="0" aria-label="Touch and drag to spin the Level Up card">
-          <div class="spin-face spin-front">
-            <div class="spin-logo-row">
-              <div class="spin-badge">L↗</div>
-              <div class="spin-logo-text"><strong>LEVEL UP</strong><span>Growth Agency</span></div>
-            </div>
+        <div class="spin-card" id="spinCard" role="button" tabindex="0" aria-label="Touch to spin the Level Up card">
+          <div class="spin-logo-row">
+            <div class="spin-badge" id="spinBadge">L↗</div>
+            <div class="spin-logo-text"><strong id="spinBrand">LEVEL UP</strong><span id="spinSub">Growth Agency</span></div>
+          </div>
+          <div class="spin-card-body" id="spinCardBody">
             <h3>Growth isn’t luck. <span>It’s strategy.</span></h3>
-            <div class="spin-hint">Touch + drag to spin</div>
           </div>
-          <div class="spin-face spin-back">
-            <h3>Built for <span>growth.</span></h3>
-            <ul class="spin-services">
-              <li><span>01</span> Web Design</li>
-              <li><span>02</span> Ad Creation</li>
-              <li><span>03</span> Merchant Processing</li>
-              <li><span>04</span> Strategy</li>
-            </ul>
-          </div>
+          <div class="spin-hint" id="spinHint">Touch to spin</div>
         </div>
       </div>
     </div>
@@ -339,21 +341,45 @@ document.querySelectorAll(".reveal").forEach((item) => revealObserver.observe(it
 
 function setupSpinCard() {
   const card = document.getElementById("spinCard");
-  if (!card) return;
+  const body = document.getElementById("spinCardBody");
+  const hint = document.getElementById("spinHint");
+  if (!card || !body) return;
 
+  let isBack = false;
   let isDragging = false;
   let startX = 0;
   let startY = 0;
-  let rotationX = -8;
-  let rotationY = -18;
+  let tiltX = -8;
+  let tiltY = -12;
+  let spinZ = 0;
   let moved = false;
 
-  function applyRotation() {
-    const transformValue = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
-    card.style.transform = transformValue;
-    card.style.webkitTransform = transformValue;
-    card.style.setProperty("--spin-x", `${rotationX}deg`);
-    card.style.setProperty("--spin-y", `${rotationY}deg`);
+  const frontMarkup = `<h3>Growth isn’t luck. <span>It’s strategy.</span></h3>`;
+  const backMarkup = `
+    <h3>Built for <span>growth.</span></h3>
+    <ul class="spin-services">
+      <li><span>01</span> Web Design</li>
+      <li><span>02</span> Ad Creation</li>
+      <li><span>03</span> Merchant Processing</li>
+      <li><span>04</span> Strategy</li>
+    </ul>
+  `;
+
+  function applyTransform() {
+    card.style.setProperty("--tilt-x", `${tiltX}deg`);
+    card.style.setProperty("--tilt-y", `${tiltY}deg`);
+    card.style.setProperty("--spin-z", `${spinZ}deg`);
+  }
+
+  function toggleSide() {
+    isBack = !isBack;
+    spinZ += 360;
+    card.classList.add("is-spinning");
+    card.classList.toggle("is-back", isBack);
+    body.innerHTML = isBack ? backMarkup : frontMarkup;
+    if (hint) hint.textContent = isBack ? "Touch to spin back" : "Touch to spin";
+    applyTransform();
+    window.setTimeout(() => card.classList.remove("is-spinning"), 650);
   }
 
   function start(event) {
@@ -361,7 +387,6 @@ function setupSpinCard() {
     moved = false;
     startX = event.clientX;
     startY = event.clientY;
-    card.classList.add("is-dragging");
     card.setPointerCapture?.(event.pointerId);
   }
 
@@ -369,24 +394,21 @@ function setupSpinCard() {
     if (!isDragging) return;
     const deltaX = event.clientX - startX;
     const deltaY = event.clientY - startY;
-    if (Math.abs(deltaX) + Math.abs(deltaY) > 6) moved = true;
-    rotationY += deltaX * 0.35;
-    rotationX -= deltaY * 0.22;
-    rotationX = Math.max(-38, Math.min(38, rotationX));
+    if (Math.abs(deltaX) + Math.abs(deltaY) > 8) moved = true;
+    tiltY = Math.max(-22, Math.min(22, tiltY + deltaX * 0.08));
+    tiltX = Math.max(-22, Math.min(22, tiltX - deltaY * 0.06));
     startX = event.clientX;
     startY = event.clientY;
-    applyRotation();
+    applyTransform();
   }
 
   function end(event) {
     if (!isDragging) return;
     isDragging = false;
-    card.classList.remove("is-dragging");
     card.releasePointerCapture?.(event.pointerId);
 
     if (!moved) {
-      rotationY += 180;
-      applyRotation();
+      toggleSide();
     }
   }
 
@@ -398,12 +420,11 @@ function setupSpinCard() {
   card.addEventListener("keydown", (event) => {
     if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
-      rotationY += 180;
-      applyRotation();
+      toggleSide();
     }
   });
 
-  applyRotation();
+  applyTransform();
 }
 
 setupSpinCard();
