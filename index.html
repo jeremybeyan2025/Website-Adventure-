@@ -3,300 +3,202 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Website Adventure | Websites, Ads & Merchant Processing</title>
-  <meta name="description" content="Website Adventure builds immersive websites, scroll-stopping ads, and merchant processing integrations for businesses ready to convert more attention into revenue." />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <title>Website Adventure | Cinematic Websites, Ads & Payments</title>
+  <meta name="description" content="Website Adventure creates cinematic websites, performance ad creative, and merchant processing integrations for brands ready to look premium and convert faster." />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="site-glow site-glow-one"></div>
-  <div class="site-glow site-glow-two"></div>
-  <canvas id="particleCanvas" aria-hidden="true"></canvas>
+  <a class="skip-link" href="#main">Skip to content</a>
 
-  <header class="site-header" id="top">
+  <header class="site-header">
     <nav class="nav-shell" aria-label="Main navigation">
-      <a href="#top" class="brand-mark" aria-label="Website Adventure home">
-        <span class="brand-icon">WA</span>
-        <span>
-          <strong>Website</strong>
-          <em>Adventure</em>
-        </span>
+      <a class="brand" href="#top" aria-label="Website Adventure home">
+        <span class="brand-orb">WA</span>
+        <span class="brand-copy"><strong>Website</strong><em>Adventure</em></span>
       </a>
 
-      <button class="mobile-toggle" id="mobileToggle" aria-label="Open navigation" aria-expanded="false">
+      <button class="menu-toggle" id="menuToggle" aria-label="Open menu" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
 
       <div class="nav-links" id="navLinks">
+        <a href="#story">Experience</a>
+        <a href="#gallery">Gallery</a>
         <a href="#services">Services</a>
-        <a href="#process">Process</a>
-        <a href="#portfolio">Work</a>
-        <a href="#payments">Payments</a>
-        <a href="#contact" class="nav-cta">Book a Strategy Call</a>
+        <a href="#proof">Proof</a>
+        <a href="#contact" class="nav-button">Start a Project</a>
       </div>
     </nav>
   </header>
 
-  <main>
-    <section class="hero section-wrap">
-      <div class="hero-copy reveal">
-        <div class="eyebrow">
-          <span class="pulse-dot"></span>
-          3D immersive websites + ads + payment integration
-        </div>
-        <h1>Websites. Ads. Payments. Built to Convert.</h1>
+  <main id="main">
+    <section class="hero" id="top" aria-label="Cinematic homepage hero">
+      <div class="hero-layer hero-layer-back" data-depth="0.08"></div>
+      <div class="hero-layer hero-layer-mid" data-depth="0.16"></div>
+      <div class="hero-layer hero-layer-front" data-depth="0.26"></div>
+      <div class="hero-overlay"></div>
+
+      <div class="hero-content reveal">
+        <p class="eyebrow"><span></span> Cinematic digital builds for premium businesses</p>
+        <h1>Websites, ads, and payments built like a brand film.</h1>
         <p class="hero-subhead">
-          We build cinematic websites, scroll-stopping ad creative, and seamless merchant processing integrations for businesses ready to look sharper, sell faster, and scale smarter.
+          We design immersive websites, scroll-stopping ad systems, and cleaner payment flows that make your business look expensive — and make the next step obvious.
         </p>
         <div class="hero-actions">
-          <a href="#contact" class="button button-primary">Book a Strategy Call</a>
-          <a href="#portfolio" class="button button-secondary">See What We Build</a>
-        </div>
-        <div class="hero-proof">
-          <span>Mobile-first builds</span>
-          <span>Lead-gen funnels</span>
-          <span>Creative that sells</span>
+          <a href="#contact" class="button button-primary">Start My Build</a>
+          <a href="#story" class="button button-ghost">Watch the Experience</a>
         </div>
       </div>
 
-      <div class="hero-visual reveal" aria-label="3D website, ads, and payment dashboard illustration">
-        <div class="orbital-stage">
-          <div class="main-device tilt-card">
-            <div class="device-topbar"><span></span><span></span><span></span></div>
-            <div class="device-screen">
-              <div class="screen-headline"></div>
-              <div class="screen-copy"></div>
-              <div class="screen-grid">
-                <span></span><span></span><span></span>
-              </div>
-              <div class="screen-button"></div>
-            </div>
-          </div>
-
-          <div class="floating-card ad-card card-one tilt-card">
-            <small>AD CREATIVE</small>
-            <strong>Stop the Scroll</strong>
-            <p>Hooks, visuals, captions, and offer framing built for attention.</p>
-          </div>
-
-          <div class="floating-card payment-card card-two tilt-card">
-            <small>PAYMENTS</small>
-            <strong>$12,840</strong>
-            <p>Cleaner checkout. Faster transactions. Better flow.</p>
-          </div>
-
-          <div class="floating-card funnel-card card-three tilt-card">
-            <small>FUNNEL</small>
-            <strong>Click → Call → Close</strong>
-            <p>Every page built around the next conversion.</p>
-          </div>
-        </div>
+      <div class="scroll-cue" aria-hidden="true">
+        <span></span>
+        Scroll
       </div>
     </section>
 
-    <section class="problem section-wrap reveal">
-      <div class="section-kicker">The real problem</div>
-      <h2>Your business looks outdated before the customer ever calls.</h2>
-      <p>
-        Most businesses lose leads because the website feels old, the ads do not stop attention, and the payment process creates friction. Website Adventure fixes the entire digital front end — from first impression to final transaction.
-      </p>
-      <div class="problem-grid">
-        <article class="glass-card">
-          <span class="card-number">01</span>
-          <h3>Weak website</h3>
-          <p>Visitors judge trust in seconds. A dated site makes a premium business feel average.</p>
-        </article>
-        <article class="glass-card">
-          <span class="card-number">02</span>
-          <h3>Flat ad creative</h3>
-          <p>Bad ads burn attention and budget. Strong creative gives the offer a reason to be noticed.</p>
-        </article>
-        <article class="glass-card">
-          <span class="card-number">03</span>
-          <h3>Clunky payments</h3>
-          <p>Every extra step creates drop-off. Cleaner payment flows help customers move with less friction.</p>
-        </article>
+    <section class="story" id="story">
+      <div class="story-sticky">
+        <div class="story-copy reveal">
+          <p class="eyebrow"><span></span> Guided visual experience</p>
+          <h2>Every scroll should make the brand feel more valuable.</h2>
+          <p>
+            The homepage is built as a sequence: first attention, then trust, then action. As users scroll, the visuals shift, the message sharpens, and the offer becomes easier to understand.
+          </p>
+        </div>
+
+        <div class="story-stage" aria-live="polite">
+          <article class="story-card active" data-story-card="0">
+            <small>01 / First impression</small>
+            <h3>Visual authority</h3>
+            <p>Full-screen composition, dark cinematic contrast, and layered motion create instant premium positioning.</p>
+          </article>
+          <article class="story-card" data-story-card="1">
+            <small>02 / Conversion path</small>
+            <h3>Lead flow</h3>
+            <p>Headlines, buttons, proof blocks, and forms are structured around one clean path to inquiry.</p>
+          </article>
+          <article class="story-card" data-story-card="2">
+            <small>03 / Creative engine</small>
+            <h3>Ad-ready storytelling</h3>
+            <p>The same positioning becomes social ads, reels, captions, offer angles, and landing page creative.</p>
+          </article>
+          <article class="story-card" data-story-card="3">
+            <small>04 / Payment motion</small>
+            <h3>Checkout without friction</h3>
+            <p>Merchant processing and payment steps are connected to the funnel so customers can act when interest peaks.</p>
+          </article>
+        </div>
+      </div>
+
+      <div class="story-steps" aria-hidden="true">
+        <div class="story-step" data-step="0"></div>
+        <div class="story-step" data-step="1"></div>
+        <div class="story-step" data-step="2"></div>
+        <div class="story-step" data-step="3"></div>
       </div>
     </section>
 
-    <section class="services section-wrap" id="services">
-      <div class="section-heading reveal">
-        <div class="section-kicker">Three growth engines</div>
-        <h2>One agency system for attention, trust, and transactions.</h2>
+    <section class="gallery" id="gallery">
+      <div class="section-intro reveal">
+        <p class="eyebrow"><span></span> Immersive image direction</p>
+        <h2>Large visual panels with depth, rhythm, and restraint.</h2>
       </div>
+
+      <article class="gallery-panel reveal tilt-zone">
+        <div class="visual-plane visual-plane-one" role="img" aria-label="Abstract premium website interface scene"></div>
+        <div class="floating-caption">
+          <small>Website systems</small>
+          <h3>Landing pages that feel engineered, not assembled.</h3>
+          <p>Layered sections, cinematic contrast, and conversion-focused content blocks.</p>
+        </div>
+      </article>
+
+      <article class="gallery-panel gallery-panel-reverse reveal tilt-zone">
+        <div class="visual-plane visual-plane-two" role="img" aria-label="Abstract social ad creative scene"></div>
+        <div class="floating-caption">
+          <small>Ad creation</small>
+          <h3>Creative built to stop motion, not just fill a feed.</h3>
+          <p>Hooks, captions, offer angles, and visual concepts that connect back to the website.</p>
+        </div>
+      </article>
+
+      <article class="gallery-panel reveal tilt-zone">
+        <div class="visual-plane visual-plane-three" role="img" aria-label="Abstract payment dashboard scene"></div>
+        <div class="floating-caption">
+          <small>Merchant processing</small>
+          <h3>Payment flows that look clean and feel effortless.</h3>
+          <p>Checkout, booking, lead capture, and card processing integration with fewer dead ends.</p>
+        </div>
+      </article>
+    </section>
+
+    <section class="services" id="services">
+      <div class="section-intro reveal">
+        <p class="eyebrow"><span></span> Core services</p>
+        <h2>One polished system: site, ads, and transaction flow.</h2>
+      </div>
+
       <div class="service-grid">
-        <article class="service-card tilt-card reveal">
+        <article class="service-card reveal tilt-zone">
           <div class="service-icon">01</div>
-          <h3>Immersive Website Design</h3>
-          <p>Custom websites, landing pages, and lead-generation funnels built for credibility, speed, mobile performance, and conversion.</p>
-          <ul>
-            <li>Premium homepage design</li>
-            <li>Landing pages and funnels</li>
-            <li>Mobile-first user experience</li>
-          </ul>
-          <a href="#contact">Build my website</a>
+          <h3>Cinematic Website Design</h3>
+          <p>Premium homepages, landing pages, and funnels with strong visual hierarchy and clean mobile behavior.</p>
         </article>
-
-        <article class="service-card tilt-card reveal">
+        <article class="service-card reveal tilt-zone">
           <div class="service-icon">02</div>
-          <h3>Ad Creation & Campaign Assets</h3>
-          <p>High-impact creative for Instagram, Facebook, TikTok-style reels, local service ads, and paid social campaigns.</p>
-          <ul>
-            <li>Hooks and offer angles</li>
-            <li>Static and motion concepts</li>
-            <li>Captions, CTAs, and funnels</li>
-          </ul>
-          <a href="#contact">Create my ads</a>
+          <h3>Scroll-Stopping Ads</h3>
+          <p>Creative direction, campaign hooks, captions, reels concepts, static ads, and CTA-driven assets.</p>
         </article>
-
-        <article class="service-card tilt-card reveal">
+        <article class="service-card reveal tilt-zone">
           <div class="service-icon">03</div>
-          <h3>Merchant Processing Integration</h3>
-          <p>Payment setup, checkout integration, and cleaner transaction workflows for businesses that want fewer roadblocks after interest is created.</p>
-          <ul>
-            <li>Payment flow planning</li>
-            <li>Checkout and booking integration</li>
-            <li>Card processing support</li>
-          </ul>
-          <a href="#contact">Upgrade my payments</a>
+          <h3>Merchant Integration</h3>
+          <p>Online payment setup, checkout planning, card processing flow, and payment-ready lead journeys.</p>
+        </article>
+        <article class="service-card reveal tilt-zone">
+          <div class="service-icon">04</div>
+          <h3>Conversion Architecture</h3>
+          <p>Every section is designed to move users from attention to trust to booked call or purchase.</p>
         </article>
       </div>
     </section>
 
-    <section class="process section-wrap" id="process">
-      <div class="section-heading reveal">
-        <div class="section-kicker">Built like a campaign</div>
-        <h2>From idea to launch, every step is engineered to sell.</h2>
+    <section class="proof" id="proof">
+      <div class="section-intro reveal">
+        <p class="eyebrow"><span></span> Proof and clarity</p>
+        <h2>Grounded strategy after the cinematic first impression.</h2>
       </div>
-      <div class="timeline reveal">
-        <div class="timeline-line"></div>
-        <article>
-          <span>01</span>
-          <h3>Discover</h3>
-          <p>We identify your offer, audience, brand position, conversion goal, and fastest path to revenue.</p>
+
+      <div class="proof-track reveal" aria-label="Proof cards">
+        <article class="proof-card">
+          <strong>“The site finally matches the value of the offer.”</strong>
+          <p>Premium visual positioning for local service businesses, clinics, restaurants, agencies, and professional brands.</p>
         </article>
-        <article>
-          <span>02</span>
-          <h3>Design</h3>
-          <p>We create the website direction, visual system, ad concepts, and payment journey around the same message.</p>
+        <article class="proof-card">
+          <strong>“The ads and website finally tell the same story.”</strong>
+          <p>Creative, copy, and landing pages aligned around one clear message and one next action.</p>
         </article>
-        <article>
-          <span>03</span>
-          <h3>Launch</h3>
-          <p>We deploy the pages, organize creative assets, and connect the systems needed to capture leads or payments.</p>
-        </article>
-        <article>
-          <span>04</span>
-          <h3>Optimize</h3>
-          <p>We refine headlines, creative, layout, and user flow so the experience keeps getting sharper after launch.</p>
+        <article class="proof-card">
+          <strong>“The payment path stopped feeling like an afterthought.”</strong>
+          <p>Checkout and merchant processing integrated into the user journey instead of bolted on at the end.</p>
         </article>
       </div>
     </section>
 
-    <section class="portfolio section-wrap" id="portfolio">
-      <div class="section-heading reveal">
-        <div class="section-kicker">Sample build types</div>
-        <h2>Work that looks expensive — and sells like it should.</h2>
-      </div>
-      <div class="portfolio-grid">
-        <article class="portfolio-card reveal">
-          <span>Luxury Services</span>
-          <h3>Premium local business landing page</h3>
-          <p>Sharp design, high-trust copy, and clear call scheduling.</p>
-        </article>
-        <article class="portfolio-card reveal">
-          <span>Medical Office</span>
-          <h3>Paperless intake website funnel</h3>
-          <p>Cleaner patient journey from traffic to booked appointment.</p>
-        </article>
-        <article class="portfolio-card reveal">
-          <span>Restaurant</span>
-          <h3>Social ad campaign system</h3>
-          <p>Reels, promos, offers, and CTA-driven captions.</p>
-        </article>
-        <article class="portfolio-card reveal">
-          <span>Legal Leads</span>
-          <h3>Car wreck and injury funnel</h3>
-          <p>High-intent page structure built around urgent calls.</p>
-        </article>
-        <article class="portfolio-card reveal">
-          <span>Fitness Brand</span>
-          <h3>Membership conversion page</h3>
-          <p>Offer framing, proof blocks, and mobile CTA placement.</p>
-        </article>
-        <article class="portfolio-card reveal">
-          <span>Payments</span>
-          <h3>Checkout integration flow</h3>
-          <p>From product interest to payment with fewer dead ends.</p>
-        </article>
-      </div>
-    </section>
-
-    <section class="payments section-wrap" id="payments">
-      <div class="payment-panel reveal">
-        <div>
-          <div class="section-kicker">Merchant processing</div>
-          <h2>Payments should feel as sharp as your brand.</h2>
-          <p>
-            We help businesses connect payment tools into websites, funnels, checkout pages, and booking experiences so customers can move from interest to action without unnecessary friction.
-          </p>
-          <a href="#contact" class="button button-primary">Integrate my payments</a>
-        </div>
-        <div class="payment-dashboard tilt-card" aria-hidden="true">
-          <div class="dashboard-row top"><span>Transaction Flow</span><strong>Live</strong></div>
-          <div class="dashboard-metric"><span>Approved Volume</span><strong>$48,920</strong></div>
-          <div class="dashboard-bars"><span></span><span></span><span></span><span></span><span></span></div>
-          <div class="dashboard-row"><span>Website</span><strong>Connected</strong></div>
-          <div class="dashboard-row"><span>Checkout</span><strong>Optimized</strong></div>
-          <div class="dashboard-row"><span>Lead Form</span><strong>Active</strong></div>
-        </div>
-      </div>
-    </section>
-
-    <section class="ad-wall section-wrap">
-      <div class="section-heading reveal">
-        <div class="section-kicker">Creative that moves</div>
-        <h2>Ads people actually stop for.</h2>
-        <p>Hooks, visuals, captions, landing pages, and CTAs aligned into one clean conversion path.</p>
-      </div>
-      <div class="marquee reveal" aria-label="Ad hook examples">
-        <div class="marquee-track">
-          <span>Stop Losing Leads to an Outdated Website</span>
-          <span>Your Checkout Is Costing You Sales</span>
-          <span>Better Ads. Better Website. Better Results.</span>
-          <span>Turn Clicks Into Customers</span>
-          <span>Make Your Business Look Like the Premium Choice</span>
-          <span>Stop Losing Leads to an Outdated Website</span>
-          <span>Your Checkout Is Costing You Sales</span>
-          <span>Better Ads. Better Website. Better Results.</span>
-        </div>
-      </div>
-    </section>
-
-    <section class="contact section-wrap" id="contact">
-      <div class="contact-grid reveal">
-        <div class="contact-copy">
-          <div class="section-kicker">Ready to launch?</div>
-          <h2>Build a digital presence that actually performs.</h2>
-          <p>
-            Tell us what you need. We will map the website, ad creative, and payment flow needed to make your business look premium and convert attention into action.
-          </p>
-          <div class="contact-points">
-            <span>Strategy-first design</span>
-            <span>Premium visual direction</span>
-            <span>Conversion-focused build</span>
-          </div>
-        </div>
-
-        <form class="lead-form" id="leadForm">
+    <section class="final-cta" id="contact">
+      <div class="cta-visual" aria-hidden="true"></div>
+      <div class="cta-content reveal">
+        <p class="eyebrow"><span></span> Start the adventure</p>
+        <h2>Make your business feel like the premium choice before the first call.</h2>
+        <p>
+          Tell us what you need built. We will map the visual system, ads, and payment path around one high-converting experience.
+        </p>
+        <form class="cta-form" id="leadForm">
           <label>
             Name
             <input type="text" name="name" placeholder="Your name" required>
           </label>
           <label>
-            Business Name
+            Business
             <input type="text" name="business" placeholder="Business name" required>
           </label>
           <label>
@@ -304,42 +206,34 @@
             <input type="email" name="email" placeholder="you@email.com" required>
           </label>
           <label>
-            Phone
-            <input type="tel" name="phone" placeholder="Phone number">
-          </label>
-          <label>
-            What do you need?
+            Service
             <select name="service" required>
-              <option value="">Select one</option>
+              <option value="">What do you need?</option>
               <option>Website Design</option>
               <option>Ad Creation</option>
               <option>Merchant Processing</option>
               <option>All of the Above</option>
             </select>
           </label>
-          <label>
-            Current Website URL
-            <input type="url" name="website" placeholder="https://example.com">
-          </label>
-          <label class="full-span">
+          <label class="form-wide">
             Message
-            <textarea name="message" rows="5" placeholder="Tell us what you want to build"></textarea>
+            <textarea name="message" rows="4" placeholder="Tell us what you want to build"></textarea>
           </label>
-          <button type="submit" class="button button-primary full-span">Request My Strategy Call</button>
-          <p class="form-note" id="formNote">This form opens your email app with the lead details prefilled.</p>
+          <button class="button button-primary form-wide" type="submit">Request My Strategy Call</button>
+          <p class="form-note form-wide" id="formNote">This opens a prefilled email with the project details.</p>
         </form>
       </div>
     </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="section-wrap footer-inner">
-      <a href="#top" class="brand-mark">
-        <span class="brand-icon">WA</span>
-        <span><strong>Website</strong><em>Adventure</em></span>
+  <footer class="footer">
+    <div class="footer-inner">
+      <a class="brand" href="#top">
+        <span class="brand-orb">WA</span>
+        <span class="brand-copy"><strong>Website</strong><em>Adventure</em></span>
       </a>
-      <p>Immersive websites, scroll-stopping ads, and merchant processing integration for modern businesses.</p>
-      <a href="#contact">Book a Strategy Call</a>
+      <p>Cinematic websites. Premium ads. Cleaner payment journeys.</p>
+      <a href="#contact">Start a Project</a>
     </div>
   </footer>
 
