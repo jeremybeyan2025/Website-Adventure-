@@ -1,21 +1,23 @@
-const mobileToggle = document.getElementById("mobileToggle");
+const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+const menuToggle = document.getElementById("menuToggle");
 const navLinks = document.getElementById("navLinks");
 
-if (mobileToggle && navLinks) {
-  mobileToggle.addEventListener("click", () => {
-    const isOpen = navLinks.classList.toggle("open");
-    mobileToggle.setAttribute("aria-expanded", String(isOpen));
+if (menuToggle && navLinks) {
+  menuToggle.addEventListener("click", () => {
+    const open = navLinks.classList.toggle("open");
+    menuToggle.setAttribute("aria-expanded", String(open));
   });
 
   navLinks.querySelectorAll("a").forEach((link) => {
     link.addEventListener("click", () => {
       navLinks.classList.remove("open");
-      mobileToggle.setAttribute("aria-expanded", "false");
+      menuToggle.setAttribute("aria-expanded", "false");
     });
   });
 }
 
-const revealElements = document.querySelectorAll(".reveal");
+const revealItems = document.querySelectorAll(".reveal");
 const revealObserver = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -25,26 +27,98 @@ const revealObserver = new IntersectionObserver(
       }
     });
   },
-  { threshold: 0.14 }
+  { threshold: 0.18, rootMargin: "0px 0px -40px 0px" }
 );
 
-revealElements.forEach((element) => revealObserver.observe(element));
+revealItems.forEach((item) => revealObserver.observe(item));
 
-const tiltCards = document.querySelectorAll(".tilt-card");
+const hero = document.querySelector(".hero");
+const heroLayers = document.querySelectorAll(".hero-layer");
+let pointerX = 0;
+let pointerY = 0;
+let latestScrollY = window.scrollY;
+let ticking = false;
 
-tiltCards.forEach((card) => {
-  card.addEventListener("mousemove", (event) => {
-    const rect = card.getBoundingClientRect();
-    const x = event.clientX - rect.left;
-    const y = event.clientY - rect.top;
-    const rotateX = ((y / rect.height) - 0.5) * -8;
-    const rotateY = ((x / rect.width) - 0.5) * 8;
+function updateHeroDepth() {
+  if (!hero || prefersReducedMotion) return;
+  const heroHeight = hero.offsetHeight || 1;
+  const progress = Math.min(latestScrollY / heroHeight, 1);
 
-    card.style.transform = `perspective(900px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-2px)`;
+  heroLayers.forEach((layer) => {
+    const depth = Number(layer.dataset.depth || 0.1);
+    const moveX = pointerX * depth * 24;
+    const moveY = pointerY * depth * 18 + progress * depth * 180;
+    const scale = 1 + progress * depth * 0.18;
+    layer.style.transform = `translate3d(${moveX}px, ${moveY}px, 0) scale(${scale})`;
+  });
+}
+
+function requestTick() {
+  if (!ticking) {
+    window.requestAnimationFrame(() => {
+      updateHeroDepth();
+      updateStoryCards();
+      ticking = false;
+    });
+    ticking = true;
+  }
+}
+
+window.addEventListener("scroll", () => {
+  latestScrollY = window.scrollY;
+  requestTick();
+}, { passive: true });
+
+window.addEventListener("pointermove", (event) => {
+  if (prefersReducedMotion) return;
+  pointerX = (event.clientX / window.innerWidth - 0.5) * 2;
+  pointerY = (event.clientY / window.innerHeight - 0.5) * 2;
+  requestTick();
+}, { passive: true });
+
+const storySection = document.querySelector(".story");
+const storyCards = Array.from(document.querySelectorAll(".story-card"));
+
+function updateStoryCards() {
+  if (!storySection || !storyCards.length) return;
+  const rect = storySection.getBoundingClientRect();
+  const scrollable = Math.max(storySection.offsetHeight - window.innerHeight, 1);
+  const progress = Math.min(Math.max(-rect.top / scrollable, 0), 1);
+  const index = Math.min(storyCards.length - 1, Math.floor(progress * storyCards.length));
+
+  storyCards.forEach((card, cardIndex) => {
+    const distance = Math.abs(index - cardIndex);
+    card.classList.toggle("active", cardIndex === index);
+
+    if (!prefersReducedMotion && window.innerWidth > 1020) {
+      const side = cardIndex - index;
+      const rotate = side * 8;
+      const translateX = side * 54;
+      const translateZ = cardIndex === index ? 120 : -160 - distance * 80;
+      const scale = cardIndex === index ? 1 : 0.82 - distance * 0.04;
+      const opacity = cardIndex === index ? 1 : Math.max(0, 0.24 - distance * 0.12);
+      const blur = cardIndex === index ? 0 : Math.min(14, distance * 7);
+
+      card.style.transform = `translate(-50%, -50%) translate3d(${translateX}px, ${side * 24}px, ${translateZ}px) scale(${scale}) rotateX(8deg) rotateY(${rotate}deg)`;
+      card.style.opacity = opacity;
+      card.style.filter = `blur(${blur}px)`;
+    }
+  });
+}
+
+const tiltZones = document.querySelectorAll(".tilt-zone");
+
+tiltZones.forEach((zone) => {
+  zone.addEventListener("pointermove", (event) => {
+    if (prefersReducedMotion || window.innerWidth < 900) return;
+    const rect = zone.getBoundingClientRect();
+    const x = (event.clientX - rect.left) / rect.width - 0.5;
+    const y = (event.clientY - rect.top) / rect.height - 0.5;
+    zone.style.transform = `perspective(1100px) rotateX(${y * -5}deg) rotateY(${x * 6}deg) translateY(-2px)`;
   });
 
-  card.addEventListener("mouseleave", () => {
-    card.style.transform = "";
+  zone.addEventListener("pointerleave", () => {
+    zone.style.transform = "";
   });
 });
 
@@ -58,99 +132,21 @@ if (leadForm) {
     const name = data.get("name") || "";
     const business = data.get("business") || "";
     const email = data.get("email") || "";
-    const phone = data.get("phone") || "";
     const service = data.get("service") || "";
-    const website = data.get("website") || "";
     const message = data.get("message") || "";
 
-    const subject = encodeURIComponent(`Website Adventure Strategy Call - ${business || name}`);
+    const subject = encodeURIComponent(`Website Adventure Project Request - ${business || name}`);
     const body = encodeURIComponent(
-      `New strategy call request\n\nName: ${name}\nBusiness: ${business}\nEmail: ${email}\nPhone: ${phone}\nService Needed: ${service}\nCurrent Website: ${website}\n\nMessage:\n${message}`
+      `New Website Adventure project request\n\nName: ${name}\nBusiness: ${business}\nEmail: ${email}\nService Needed: ${service}\n\nMessage:\n${message}`
     );
 
     window.location.href = `mailto:jeremybeyan2025@gmail.com?subject=${subject}&body=${body}`;
 
     if (formNote) {
-      formNote.textContent = "Your email app should open with the lead details prefilled. Replace the destination email in script.js if needed.";
+      formNote.textContent = "Your email app should open with the project details prefilled.";
     }
   });
 }
 
-const canvas = document.getElementById("particleCanvas");
-const ctx = canvas ? canvas.getContext("2d") : null;
-let particles = [];
-let animationFrame;
-
-function resizeCanvas() {
-  if (!canvas || !ctx) return;
-  canvas.width = window.innerWidth * window.devicePixelRatio;
-  canvas.height = window.innerHeight * window.devicePixelRatio;
-  canvas.style.width = `${window.innerWidth}px`;
-  canvas.style.height = `${window.innerHeight}px`;
-  ctx.setTransform(window.devicePixelRatio, 0, 0, window.devicePixelRatio, 0, 0);
-}
-
-function createParticles() {
-  const count = Math.min(90, Math.floor(window.innerWidth / 18));
-  particles = Array.from({ length: count }, () => ({
-    x: Math.random() * window.innerWidth,
-    y: Math.random() * window.innerHeight,
-    radius: Math.random() * 1.8 + 0.4,
-    vx: (Math.random() - 0.5) * 0.25,
-    vy: (Math.random() - 0.5) * 0.25,
-    alpha: Math.random() * 0.55 + 0.12,
-  }));
-}
-
-function drawParticles() {
-  if (!canvas || !ctx) return;
-  ctx.clearRect(0, 0, window.innerWidth, window.innerHeight);
-
-  particles.forEach((particle, index) => {
-    particle.x += particle.vx;
-    particle.y += particle.vy;
-
-    if (particle.x < 0 || particle.x > window.innerWidth) particle.vx *= -1;
-    if (particle.y < 0 || particle.y > window.innerHeight) particle.vy *= -1;
-
-    ctx.beginPath();
-    ctx.arc(particle.x, particle.y, particle.radius, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(100, 255, 245, ${particle.alpha})`;
-    ctx.fill();
-
-    for (let j = index + 1; j < particles.length; j++) {
-      const other = particles[j];
-      const dx = particle.x - other.x;
-      const dy = particle.y - other.y;
-      const distance = Math.sqrt(dx * dx + dy * dy);
-
-      if (distance < 115) {
-        ctx.beginPath();
-        ctx.moveTo(particle.x, particle.y);
-        ctx.lineTo(other.x, other.y);
-        ctx.strokeStyle = `rgba(76, 201, 255, ${0.08 * (1 - distance / 115)})`;
-        ctx.lineWidth = 1;
-        ctx.stroke();
-      }
-    }
-  });
-
-  animationFrame = requestAnimationFrame(drawParticles);
-}
-
-function initParticles() {
-  const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  if (!canvas || !ctx || reduceMotion) return;
-  resizeCanvas();
-  createParticles();
-  drawParticles();
-}
-
-window.addEventListener("resize", () => {
-  if (animationFrame) cancelAnimationFrame(animationFrame);
-  resizeCanvas();
-  createParticles();
-  drawParticles();
-});
-
-initParticles();
+updateHeroDepth();
+updateStoryCards();
