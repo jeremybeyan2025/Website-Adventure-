@@ -53,7 +53,7 @@ tiltCards.forEach((card) => {
     const rect = card.getBoundingClientRect();
     const x = (event.clientX - rect.left) / rect.width - 0.5;
     const y = (event.clientY - rect.top) / rect.height - 0.5;
-    card.style.transform = `perspective(1000px) rotateX(${y * -7}deg) rotateY(${x * 9}deg) translateY(-4px) translateZ(18px)`;
+    card.style.transform = `perspective(1000px) rotateX(${y * -5}deg) rotateY(${x * 7}deg) translateY(-4px) translateZ(14px)`;
   });
 
   card.addEventListener("pointerleave", () => {
@@ -77,7 +77,7 @@ function updateScrollEffects() {
   const scrollY = latestScroll;
 
   if (heroCube && !prefersReducedMotion) {
-    heroCube.style.transform = `rotateX(${scrollY * 0.018}deg) rotateY(${scrollY * 0.032}deg) translateZ(${Math.min(scrollY * 0.05, 90)}px)`;
+    heroCube.style.transform = `rotateX(${scrollY * 0.014}deg) rotateY(${scrollY * 0.024}deg) translateZ(${Math.min(scrollY * 0.035, 72)}px)`;
   }
 
   if (lab && labPanels.length) {
@@ -91,12 +91,12 @@ function updateScrollEffects() {
       panel.classList.toggle("active", index === activeIndex);
 
       if (!prefersReducedMotion && window.innerWidth > 1060) {
-        const opacity = index === activeIndex ? 1 : Math.max(0, 0.18 - Math.abs(distance) * 0.08);
-        const blur = index === activeIndex ? 0 : Math.min(16, Math.abs(distance) * 8);
-        const translateX = distance * 95;
-        const translateZ = index === activeIndex ? 160 : -220 - Math.abs(distance) * 90;
-        const rotateY = distance * -22;
-        const scale = index === activeIndex ? 1 : 0.74;
+        const opacity = index === activeIndex ? 1 : Math.max(0, 0.16 - Math.abs(distance) * 0.07);
+        const blur = index === activeIndex ? 0 : Math.min(14, Math.abs(distance) * 7);
+        const translateX = distance * 86;
+        const translateZ = index === activeIndex ? 150 : -210 - Math.abs(distance) * 82;
+        const rotateY = distance * -18;
+        const scale = index === activeIndex ? 1 : 0.76;
         panel.style.opacity = opacity;
         panel.style.filter = `blur(${blur}px)`;
         panel.style.transform = `translateY(-50%) translateX(${translateX}px) translateZ(${translateZ}px) rotateY(${rotateY}deg) scale(${scale})`;
@@ -109,8 +109,8 @@ function updateScrollEffects() {
 
     if (!prefersReducedMotion && window.innerWidth > 1060) {
       screenCards.forEach((screen, index) => {
-        const offset = (progress - index * 0.08) * 120;
-        screen.style.transform = `translate3d(${30 + index * 60}px, ${-120 + index * 92 - offset}px, ${130 - index * 60 + offset * 0.3}px)`;
+        const offset = (progress - index * 0.08) * 98;
+        screen.style.transform = `translate3d(${30 + index * 60}px, ${-120 + index * 92 - offset}px, ${130 - index * 60 + offset * 0.28}px)`;
       });
     }
   }
@@ -146,9 +146,9 @@ if (leadForm) {
     const service = data.get("service") || "";
     const message = data.get("message") || "";
 
-    const subject = encodeURIComponent(`Website Adventure Strategy Call - ${business || name}`);
+    const subject = encodeURIComponent(`Website Adventure Premium Build - ${business || name}`);
     const body = encodeURIComponent(
-      `New Website Adventure lead\n\nName: ${name}\nBusiness: ${business}\nEmail: ${email}\nNeed: ${service}\n\nMessage:\n${message}`
+      `New Website Adventure premium build request\n\nName: ${name}\nBusiness: ${business}\nEmail: ${email}\nNeed: ${service}\n\nMessage:\n${message}`
     );
 
     window.location.href = `mailto:jeremybeyan2025@gmail.com?subject=${subject}&body=${body}`;
@@ -172,15 +172,15 @@ function resizeCanvas() {
 }
 
 function createParticles() {
-  const count = Math.min(130, Math.floor(window.innerWidth / 10));
+  const count = Math.min(90, Math.floor(window.innerWidth / 16));
   particles = Array.from({ length: count }, () => ({
     x: Math.random() * window.innerWidth,
     y: Math.random() * window.innerHeight,
     z: Math.random() * 1 + 0.2,
-    vx: (Math.random() - 0.5) * 0.22,
-    vy: (Math.random() - 0.5) * 0.22,
-    r: Math.random() * 1.8 + 0.4,
-    a: Math.random() * 0.5 + 0.14,
+    vx: (Math.random() - 0.5) * 0.12,
+    vy: (Math.random() - 0.5) * 0.12,
+    r: Math.random() * 1.25 + 0.35,
+    a: Math.random() * 0.34 + 0.08,
   }));
 }
 
@@ -197,7 +197,7 @@ function drawParticles() {
 
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r * p.z, 0, Math.PI * 2);
-    ctx.fillStyle = `rgba(118,255,240,${p.a})`;
+    ctx.fillStyle = `rgba(215,183,116,${p.a})`;
     ctx.fill();
 
     for (let j = i + 1; j < particles.length; j++) {
@@ -205,11 +205,11 @@ function drawParticles() {
       const dx = p.x - q.x;
       const dy = p.y - q.y;
       const dist = Math.sqrt(dx * dx + dy * dy);
-      if (dist < 115) {
+      if (dist < 105) {
         ctx.beginPath();
         ctx.moveTo(p.x, p.y);
         ctx.lineTo(q.x, q.y);
-        ctx.strokeStyle = `rgba(85,185,255,${0.09 * (1 - dist / 115)})`;
+        ctx.strokeStyle = `rgba(246,241,231,${0.05 * (1 - dist / 105)})`;
         ctx.lineWidth = 1;
         ctx.stroke();
       }
