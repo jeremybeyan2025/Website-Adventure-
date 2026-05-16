@@ -1,0 +1,47 @@
+.rail-city {
+  background-image:
+    linear-gradient(180deg, rgba(10,10,10,.12), rgba(10,10,10,.94)),
+    url("2117B434-4FC6-4994-AD15-084E980D912A.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+
+.visual-web {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.84) 78%),
+    url("BE64B3A0-2856-4C7D-9326-55E9B7140168.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+
+.visual-ads {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.82) 78%),
+    url("24AB994A-CD12-4F26-8F1D-054BBB297212.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+
+.visual-pay {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.84) 78%),
+    url("899F9BCA-E1AC-4E39-B39A-B5A56D25CB39.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+
+.visual-funnel {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.06) 0%, rgba(0,0,0,.82) 78%),
+    url("2117B434-4FC6-4994-AD15-084E980D912A.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
+
+.contact::before {
+  background-image:
+    linear-gradient(90deg, rgba(255,30,45,.92), rgba(255,30,45,.78) 50%, rgba(10,10,10,.72)),
+    url("899F9BCA-E1AC-4E39-B39A-B5A56D25CB39.png") !important;
+  background-size: cover, cover !important;
+  background-position: center, center !important;
+}
