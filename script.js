@@ -90,8 +90,12 @@ function injectSpinCard() {
       display: grid;
       place-items: center;
       perspective: 1200px;
+      -webkit-perspective: 1200px;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
       touch-action: none;
       user-select: none;
+      -webkit-user-select: none;
     }
 
     .spin-card {
@@ -99,7 +103,9 @@ function injectSpinCard() {
       width: min(430px, 86vw);
       aspect-ratio: 3 / 4;
       transform-style: preserve-3d;
-      transform: rotateX(var(--spin-x, -8deg)) rotateY(var(--spin-y, -18deg));
+      -webkit-transform-style: preserve-3d;
+      transform: rotateX(-8deg) rotateY(-18deg);
+      -webkit-transform: rotateX(-8deg) rotateY(-18deg);
       transition: transform .18s ease-out;
       cursor: grab;
       filter: drop-shadow(0 48px 70px rgba(0,0,0,.45));
@@ -121,11 +127,16 @@ function injectSpinCard() {
       border: 2px solid rgba(255,255,255,.25);
       border-radius: 28px;
       backface-visibility: hidden;
+      -webkit-backface-visibility: hidden;
+      transform-style: preserve-3d;
+      -webkit-transform-style: preserve-3d;
       background: #fff;
       color: #0a0a0a;
     }
 
     .spin-front {
+      transform: rotateY(0deg) translateZ(2px);
+      -webkit-transform: rotateY(0deg) translateZ(2px);
       background:
         linear-gradient(180deg, rgba(255,255,255,.2), rgba(255,255,255,.88)),
         url("24AB994A-CD12-4F26-8F1D-054BBB297212.png") center/cover;
@@ -140,7 +151,8 @@ function injectSpinCard() {
     }
 
     .spin-back {
-      transform: rotateY(180deg);
+      transform: rotateY(180deg) translateZ(2px);
+      -webkit-transform: rotateY(180deg) translateZ(2px);
       color: #fff;
       background:
         linear-gradient(180deg, rgba(0,0,0,.18), rgba(0,0,0,.86)),
@@ -150,6 +162,8 @@ function injectSpinCard() {
     .spin-face > * {
       position: relative;
       z-index: 2;
+      transform: translateZ(8px);
+      -webkit-transform: translateZ(8px);
     }
 
     .spin-logo-row {
@@ -335,6 +349,9 @@ function setupSpinCard() {
   let moved = false;
 
   function applyRotation() {
+    const transformValue = `rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+    card.style.transform = transformValue;
+    card.style.webkitTransform = transformValue;
     card.style.setProperty("--spin-x", `${rotationX}deg`);
     card.style.setProperty("--spin-y", `${rotationY}deg`);
   }
