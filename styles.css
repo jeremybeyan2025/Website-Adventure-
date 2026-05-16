@@ -186,34 +186,27 @@ img { display: block; max-width: 100%; }
 .rail-city {
   min-height: 340px;
   margin-inline: -44px;
-  background:
-    linear-gradient(180deg, rgba(10,10,10,.12), rgba(10,10,10,.96)),
-    linear-gradient(90deg, rgba(255,255,255,.05) 0 1px, transparent 1px 44px),
-    linear-gradient(0deg, rgba(255,255,255,.06) 0 1px, transparent 1px 52px),
-    radial-gradient(circle at 70% 20%, rgba(255,255,255,.22), transparent 20%),
-    linear-gradient(90deg, #050505, #202020 45%, #050505);
   position: relative;
-}
-.rail-city::before {
-  content: "";
-  position: absolute;
-  inset: auto 0 0;
-  height: 230px;
-  background:
-    linear-gradient(90deg, transparent 0 8%, #000 8% 19%, transparent 19% 23%, #111 23% 36%, transparent 36% 41%, #000 41% 58%, transparent 58% 64%, #151515 64% 78%, transparent 78% 82%, #080808 82% 96%, transparent 96%),
-    linear-gradient(180deg, transparent, #000 55%);
-  opacity: .9;
+  overflow: hidden;
+  background-image:
+    linear-gradient(180deg, rgba(10,10,10,.08), rgba(10,10,10,.92)),
+    url("assets/images/futuristic_cityscape_with_red_lit_skyline.png"),
+    url("assets/futuristic_cityscape_with_red_lit_skyline.png"),
+    url("futuristic_cityscape_with_red_lit_skyline.png"),
+    linear-gradient(90deg, #050505, #202020 45%, #050505);
+  background-size: cover, cover, cover, cover, cover;
+  background-position: center, center, center, center, center;
 }
 .rail-city::after {
   content: "";
   position: absolute;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  height: 145px;
-  background-image: radial-gradient(rgba(255,255,255,.18) 1px, transparent 1px);
-  background-size: 13px 13px;
-  opacity: .22;
+  inset: 0;
+  background:
+    linear-gradient(180deg, transparent 35%, #000 100%),
+    radial-gradient(circle at 70% 20%, rgba(255,30,45,.25), transparent 30%),
+    radial-gradient(rgba(255,255,255,.18) 1px, transparent 1px);
+  background-size: auto, auto, 13px 13px;
+  opacity: .55;
 }
 
 .arrow-mark {
@@ -405,12 +398,40 @@ img { display: block; max-width: 100%; }
 .work-tile { position: relative; min-height: 560px; overflow: hidden; background: var(--black); color: var(--white); }
 .work-tile.tile-large { grid-column: span 2; min-height: 680px; }
 .work-tile.tile-wide { grid-column: span 2; min-height: 470px; }
-.tile-visual { position: absolute; inset: 0; transition: transform .65s ease; }
+.tile-visual { position: absolute; inset: 0; transition: transform .65s ease; background-size: cover; background-position: center; }
 .work-tile:hover .tile-visual { transform: scale(1.06); }
-.visual-web { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.82) 78%), radial-gradient(circle at 76% 22%, rgba(255,30,45,.74), transparent 18%), linear-gradient(135deg, #121212, #333 48%, #fff); }
-.visual-ads { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.82) 78%), radial-gradient(circle at 32% 24%, rgba(255,30,45,.72), transparent 20%), linear-gradient(135deg, #fff, #141414 58%, var(--red)); }
-.visual-pay { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.82) 78%), radial-gradient(circle at 70% 25%, rgba(255,255,255,.45), transparent 18%), linear-gradient(135deg, #1a1a1a, #444, #050505); }
-.visual-funnel { background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,.82) 78%), linear-gradient(90deg, var(--red) 0 32%, var(--black) 32% 65%, var(--white) 65% 100%); }
+.visual-web {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.84) 78%),
+    url("assets/images/cyberpunk_city_canyon_at_twilight.png"),
+    url("assets/cyberpunk_city_canyon_at_twilight.png"),
+    url("cyberpunk_city_canyon_at_twilight.png"),
+    linear-gradient(135deg, #121212, #333 48%, #fff);
+}
+.visual-ads {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.04) 0%, rgba(0,0,0,.82) 78%),
+    url("assets/images/modern_cityscape_with_red_accents.png"),
+    url("assets/modern_cityscape_with_red_accents.png"),
+    url("modern_cityscape_with_red_accents.png"),
+    linear-gradient(135deg, #fff, #141414 58%, var(--red));
+}
+.visual-pay {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.08) 0%, rgba(0,0,0,.84) 78%),
+    url("assets/images/futuristic_cityscape_under_stormy_skies.png"),
+    url("assets/futuristic_cityscape_under_stormy_skies.png"),
+    url("futuristic_cityscape_under_stormy_skies.png"),
+    linear-gradient(135deg, #1a1a1a, #444, #050505);
+}
+.visual-funnel {
+  background-image:
+    linear-gradient(180deg, rgba(0,0,0,.06) 0%, rgba(0,0,0,.82) 78%),
+    url("assets/images/futuristic_cityscape_with_red_lit_skyline.png"),
+    url("assets/futuristic_cityscape_with_red_lit_skyline.png"),
+    url("futuristic_cityscape_with_red_lit_skyline.png"),
+    linear-gradient(90deg, var(--red) 0 32%, var(--black) 32% 65%, var(--white) 65% 100%);
+}
 .tile-visual::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px); background-size: 64px 64px; opacity: .42; }
 .tile-copy { position: absolute; left: 26px; right: 26px; bottom: 26px; padding: 26px; border: 1px solid var(--line-light); background: rgba(5,5,5,.76); backdrop-filter: blur(14px); }
 .tile-copy span,
@@ -439,12 +460,32 @@ img { display: block; max-width: 100%; }
 .article-card:hover p { color: rgba(255,255,255,.72); }
 .partners { display: flex; flex-wrap: wrap; gap: 10px; padding: 0 0 100px; }
 .partners span { padding: 14px 18px; border: 2px solid var(--black); font-size: 13px; font-weight: 950; text-transform: uppercase; }
-.contact { color: var(--white); background: var(--red); }
+
+.contact {
+  position: relative;
+  overflow: hidden;
+  color: var(--white);
+  background: var(--red);
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background-image:
+    linear-gradient(90deg, rgba(255,30,45,.92), rgba(255,30,45,.78) 50%, rgba(10,10,10,.72)),
+    url("assets/images/futuristic_cityscape_under_stormy_skies.png"),
+    url("assets/futuristic_cityscape_under_stormy_skies.png"),
+    url("futuristic_cityscape_under_stormy_skies.png");
+  background-size: cover, cover, cover, cover;
+  background-position: center, center, center, center;
+  opacity: .9;
+}
+.contact-inner { position: relative; z-index: 1; }
 .contact-inner h2 { max-width: 1040px; margin: 18px 0 36px; color: var(--black); }
 .contact-inner > p { color: var(--black); }
 .lead-form { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; max-width: 900px; }
 .lead-form label { display: grid; gap: 8px; color: var(--black); font-size: 13px; font-weight: 950; text-transform: uppercase; }
-input, select, textarea { width: 100%; min-height: 58px; padding: 14px 16px; border: 2px solid var(--black); color: var(--black); background: transparent; font: inherit; font-weight: 750; outline: none; }
+input, select, textarea { width: 100%; min-height: 58px; padding: 14px 16px; border: 2px solid var(--black); color: var(--black); background: rgba(255,255,255,.08); font: inherit; font-weight: 750; outline: none; }
 input::placeholder, textarea::placeholder { color: rgba(10,10,10,.58); }
 textarea { resize: vertical; }
 select option { color: var(--black); }
